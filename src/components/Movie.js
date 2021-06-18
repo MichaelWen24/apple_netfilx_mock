@@ -45,11 +45,11 @@ const StyledTitleContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: space-between;
 `;
 
 const StyledP = styled.p`
-  margin: 10px;
+  margin-left: 8px;
   font-size: 18px;
 `;
 

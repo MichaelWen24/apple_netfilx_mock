@@ -6,13 +6,13 @@ function Movie({ title, image, handleButtonClick, buttonTitle, movie }) {
   const [buttonVisible, setbuttonVisible] = useState(false);
 
   return (
-    <StyledMovie
+    <Wrapper
       onMouseEnter={() => setbuttonVisible(true)}
       onMouseLeave={() => setbuttonVisible(false)}
     >
-      <img src={image} alt={title} />
+      <Image src={image} alt={title} />
       <StyledTitleContainer>
-        <p>{title}</p>
+        <StyledP>{title}</StyledP>
         {buttonVisible && (
           <Button
             onClick={() => {
@@ -23,24 +23,34 @@ function Movie({ title, image, handleButtonClick, buttonTitle, movie }) {
           </Button>
         )}
       </StyledTitleContainer>
-    </StyledMovie>
+    </Wrapper>
   );
 }
 
-const StyledMovie = styled.div`
+const Wrapper = styled.div`
   box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.1);
   min-width: 200px;
+  min-height: 330px;
   display: flex;
   justify-self: center;
   flex-direction: column;
   margin: 10px;
 `;
 
+const Image = styled.img`
+  height: 280px;
+`;
+
 const StyledTitleContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
+  /* justify-content: center; */
+`;
+
+const StyledP = styled.p`
+  margin: 10px;
+  font-size: 18px;
 `;
 
 export default Movie;

@@ -7,7 +7,7 @@ export default styled.button`
   border-radius: 5px;
   font-size: 15px;
   cursor: pointer;
-  margin-left: 8px;
+  margin-left: 5px;
   :hover {
     background-color: rgba(0, 0, 0, 0.05);
   }

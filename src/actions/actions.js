@@ -1,6 +1,8 @@
 export const SET_MOVIE = "SET_MOVIE";
 export const ADD_MOVIE = "ADD_MOVIE";
-export const REMOVE_MOVIE = "REMOVE_MOVIE"
+export const REMOVE_MOVIE = "REMOVE_MOVIE";
+export const FETCHING_DATA = "FETCHING_DATA";
+export const FETCH_DONE = "FETCH_DONE";
 
 export const fetchMyList = async () => {
   const resp = await fetch("http://localhost:3100/myList");
@@ -8,7 +10,6 @@ export const fetchMyList = async () => {
     throw new Error("fetching mylist error");
   }
   const myList = await resp.json();
-  console.log(myList);
   return myList;
 };
 
@@ -23,12 +24,14 @@ export const fetchRecommendations = async () => {
 
 export const fetchMovieAction = () => {
   return (dispatch) => {
+    dispatch(fetchingData)
     return Promise.all([fetchMyList(), fetchRecommendations()])
       .then(([myList, recommendations]) => {
         dispatch(setMovieAction(myList, recommendations));
+        dispatch(fetchDone)
       })
       .catch((e) => {
-        console.log(e);
+        throw new Error(e);
       });
   };
 };
@@ -46,13 +49,25 @@ export const setMovieAction = (myList, recommendations) => {
 export const addMovieAction = (movie) => {
   return {
     type: ADD_MOVIE,
-    payload: movie
-  }
-}
+    payload: movie,
+  };
+};
 
 export const removeMovieAction = (movie) => {
   return {
     type: REMOVE_MOVIE,
-    payload: movie
-  }
-}
+    payload: movie,
+  };
+};
+
+export const fetchingData = () => {
+  return {
+    type: FETCHING_DATA,
+  };
+};
+
+export const fetchDone = () => {
+  return {
+    type: FETCH_DONE,
+  };
+};

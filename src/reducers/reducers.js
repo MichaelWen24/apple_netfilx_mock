@@ -1,9 +1,15 @@
-import { SET_MOVIE, ADD_MOVIE, REMOVE_MOVIE } from "../actions/actions";
+import {
+  SET_MOVIE,
+  ADD_MOVIE,
+  REMOVE_MOVIE,
+  FETCHING_DATA,
+  FETCH_DONE,
+} from "../actions/actions";
 
 const initialState = {
   myList: [],
   recommendations: [],
-  loading: false,
+  loading: true,
 };
 
 export default function reducer(state = initialState, action) {
@@ -47,7 +53,18 @@ export default function reducer(state = initialState, action) {
         recommendations: [...state.recommendations, removeMovieData],
       };
     }
-
+    case FETCHING_DATA: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case FETCH_DONE: {
+      return {
+        ...state,
+        loading: false,
+      };
+    }
     default:
       return state;
   }

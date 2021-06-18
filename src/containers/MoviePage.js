@@ -29,7 +29,7 @@ function MoviePage() {
 
   return (
     <div className="movie-page">
-      <Image className="logo" src={logo} alt="netflix" />
+      <StyledLogo className="logo" src={logo} alt="netflix" />
       {loading ? (
         <div>Loading</div>
       ) : (
@@ -57,7 +57,7 @@ function MoviePage() {
   );
 }
 
-const Image = styled.img`
+const StyledLogo = styled.img`
   width: 200px;
 `;
 

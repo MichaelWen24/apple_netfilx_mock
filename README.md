@@ -1,9 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+## ScreenShot
+![image](https://github.com/MichaelWen24/apple_netfilx_mock/blob/main/Screen%20Shot%202021-06-18%20at%203.46.10%20PM.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
-
 ### `yarn start`
 
 Runs the app in the development mode.<br />

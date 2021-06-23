@@ -11,7 +11,7 @@ import styled from "styled-components";
 
 function MoviePage() {
   const dispatch = useDispatch();
-  const { myList, recommendations, loading } = useSelector((state) => {
+  const { myList, recommendations, loading, error } = useSelector((state) => {
     return state.movie;
   });
 
@@ -28,32 +28,38 @@ function MoviePage() {
   };
 
   return (
-    <div className="movie-page">
-      <StyledLogo className="logo" src={logo} alt="netflix" />
-      {loading ? (
-        <div>Loading</div>
+    <>
+      {error ? (
+        <h2>Error! {error}</h2>
       ) : (
-        <>
-          <div className="my-list">
-            <StyledTitle>My List</StyledTitle>
-            <MovieList
-              movies={myList}
-              handleButtonClick={handleRemoveMovie}
-              buttonTitle="Remove"
-            />
-          </div>
-          <hr />
-          <div className="recommendations">
-            <StyledTitle>Recommendations</StyledTitle>
-            <MovieList
-              movies={recommendations}
-              handleButtonClick={handleADDMovie}
-              buttonTitle="Add"
-            />
-          </div>
-        </>
+        <div className="movie-page">
+          <StyledLogo className="logo" src={logo} alt="netflix" />
+          {loading ? (
+            <div>Loading</div>
+          ) : (
+            <>
+              <div className="my-list">
+                <StyledTitle>My List</StyledTitle>
+                <MovieList
+                  movies={myList}
+                  handleButtonClick={handleRemoveMovie}
+                  buttonTitle="Remove"
+                />
+              </div>
+              <hr />
+              <div className="recommendations">
+                <StyledTitle>Recommendations</StyledTitle>
+                <MovieList
+                  movies={recommendations}
+                  handleButtonClick={handleADDMovie}
+                  buttonTitle="Add"
+                />
+              </div>
+            </>
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 }
 

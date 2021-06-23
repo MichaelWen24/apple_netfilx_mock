@@ -4,16 +4,25 @@ import {
   REMOVE_MOVIE,
   FETCHING_DATA,
   FETCH_DONE,
+  FETCHING_ERROR,
 } from "../actions/actions";
 
 const initialState = {
   myList: [],
   recommendations: [],
   loading: true,
+  error: null,
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case FETCHING_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: action.error.message
+      };
+    }
     case SET_MOVIE: {
       return {
         ...action.payload,

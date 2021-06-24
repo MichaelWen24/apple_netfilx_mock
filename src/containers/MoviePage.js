@@ -30,7 +30,7 @@ function MoviePage() {
   return (
     <>
       {error ? (
-        <h2>Error! {error}</h2>
+        <h2>Error: {error}!</h2>
       ) : (
         <div className="movie-page">
           <StyledLogo className="logo" src={logo} alt="netflix" />

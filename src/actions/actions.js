@@ -7,18 +7,12 @@ export const FETCHING_ERROR = "FETCHING_ERROR";
 
 export const fetchMyList = async () => {
   const resp = await fetch("http://localhost:3100/myList");
-  if (!resp.ok) {
-    throw resp.status;
-  }
   const myList = await resp.json();
   return myList;
 };
 
 export const fetchRecommendations = async () => {
   const resp = await fetch("http://localhost:3100/recommendations");
-  if (!resp.ok) {
-    throw resp.status;
-  }
   const recommendations = await resp.json();
   return recommendations;
 };
